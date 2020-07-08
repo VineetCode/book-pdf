@@ -1,0 +1,13 @@
+Some interview questions collect from other friends try to practice.
+
+1)Immutable Object is thread safe ?
+2)i have two thread one thread need to read data from file and another thread need to write that data in another file ?
+3)by using wait and notify methods need to print even and odd number ?
+4)i have 9 users and i have 3 passwords so here how to share these 3 passwords with those 9 users ?
+5)I have one integer[] ar={10,20,30,40,10,5,46,30}with some elements so how to remove dulicate elemnts with this array without using collectionc?
+6)I have 2 Strings like String s1="hello world &&@" and String s2="hai sriman sir #@#" so here with these two Strings i want to remove common elements with out using collections?
+7)I have one String like String s="i am a java developer" for this String i want to count how many times each word is repeated without using regulor expressions ?
+8)I have one hashMap object with this object i want to display only repeated values means suppose if you have one hashmap it contans 1 "a",2 "b", 3 "c" 4 "d" 5 "a", 6 "b", 7 "a" with this hashmap i want to display only repeated key and value pair ?
+9)i have one arraylist object it contans some elements so here i want to display only duplicates please write the logic ?
+10)In my application end user as part of search he is entered String like "amaz#$#%n" so here how you will replace with those special characters with some space (i got this question in one of the top MNC) ?
+11)write a programe for sort an array elements by using one loop

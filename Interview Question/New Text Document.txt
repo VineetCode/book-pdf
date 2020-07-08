@@ -1,0 +1,93 @@
+http://itrosys.com/contact.html
+
+https://www.youtube.com/watch?v=pORm7nJfGBo 604013
+Newbie
+604013 Apr 6
+, 2008 5:27 PM (in response to 259579)
+When starting server manager the following error is generated:
+
+ORA-12560: TNS:protocol adapter error occurred
+
+Cause:
+
+Oracle classify this as a 'generic protocol adapter error'. In my experience it indicates that Oracle client does not know what instance to connect to or what TNS alias to use.
+
+Possible Remedies:
+
+* If running on the server (or workstation) that is running the database (i.e. if the database is local to the machine) then try explicitly setting 'ORACLE_SID'. e.g. 
+
+set ORACLE_SID=<sid>
+
+and then try again. If this works then consider whether to make the change permanent by specifying it as a system variable.
+
+FOR RUN THIS SID PLEASE REFER IT
+Go to command prompt
+
+C:\Document and settings\ORANGE> cd\
+C:\> set oracle_sid=<DB name>
+e.g C:\> set oracle_sid=<rajesh> {press enter}
+C:\> sqlplus /nolog {press enter}
+sql:\>connect sys/sys as sysdba {press enter} it cant ask for password directly connected
+or
+sql:\>connect sys as sysdba {press enter}
+password : sys {press enter}
+sql:\> connected
+or 
+sql:\> connect scott {press enter}
+Enter password :tiger {press enter}
+sql:\> connected
+or 
+sql:\> connect system {press enter}
+Enter password :manager {press enter}
+sql:\> connected
+Like Show 0 Likes (0) Actions 
+10. Re: re:ERROR:ORA-12560: TNS:protocol adapter error
+ 635573
+Newbie
+635573 Apr 23, 2008 5:08 AM (in response to 367198)
+I'm also having a hard time with the username and passwrd. I tried scott/tiger, system/manager and sys/change_on_install as sysdba but none work. please help.
+========================================================================
+
+up vote
+39
+down vote
+accepted
+Go to the windows machine that hosts the Oracle database server
+Go to Start -> Run -> Services.msc in windows. Locate OracleService (here OracleServiceORCL) and click on "Start" to start the oracle database service (if not already running)
+Once it is up and running, from the command prompt run the following:
+
+tnsping < tnsalias >
+==============================================================================
+Just goto Command prompt
+
+Set Oracle SID C:>set oracle_sid=ORCL
+
+Now run Net start command. C:>net start oracleserviceORCL
+
+Input:
+======
+Map1                                  Map2
+=================       =======================
+Key               Value            Key                     Value
+=================      =======================
+Ram            CSE                Ram                  20000
+Ravi             CSE                Ravi                  24000
+Akash             IT                 Akash               15000
+Vipul            ECE                Vipul                 18000
+Sachin         ECE                Sachin              27000
+Vinod           ME                  Vinod                25000
+================        ========================
+
+Output:
+======
+Map3
+===============
+key              Value
+===============
+Ravi             24000
+Akash          15000
+Sachin         27000
+Vinod           25000
+
+Please ..provide me code...
+

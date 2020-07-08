@@ -1,0 +1,29 @@
+Interview Questions Asked In HCL(Telephonic Round)
+1.how to put class in hash map?
+2.custom exceptions?(how u will write)
+3.XML(total details?)
+4.how to iterate database values?
+5. what is jndi and explain?
+6.weblogic(how u will deploy application in weblogic?
+Hiebrnate 
+1.hibernate interfaces?
+2.hql queries?
+3.how u will change oracle to mysql ?
+4.hql to eliminate duplicate values?
+spring
+1. spring ioc?
+2.autowiring? how u implementd?
+3.setter and constructor injection ?what u implemented in u r project?
+4.how to load optional beans?
+5.scopes of beans?
+General
+1. static where u used in ur projects?
+2.in hash map can u take key as object?
+3.hash map(can hash map key allow duplicates)?
+4.collections used in u r project?
+5.what are the packages u used in ur projects?
+6.hash set? 
+7.how u will eliminate duplicate values from a table?
+8.prototype and singleton difference?
+9.load on start up?
+10.auto boxing and unboxing?

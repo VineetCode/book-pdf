@@ -1,0 +1,222 @@
+ThreadLocal:-->
+===========
+--> Threadlocal is a predefined class that is introduced from JDK 1.4 to maintain 1 obj per thread .
+--> It internally uses HashMap having thread names as key and objects  to be maintained as values.
+--> It doesnot  allow the object set by 1 thread and getting accessed by another thread.
+--> ThreadLocal is  a very useful to make the objs as thread-safe even though object is not immutable
+     and synchronized concepts are not used
+
+-->In java  we can create variables in 4 scopes.
+     1. Instance scope 
+     2. class scope(static variable)
+     3. Local scope
+     4. Thread scope(Thread local)
+
+--> ThreadScope variables are placed in ThreadLocal on 1 per thread basis.
+--> The variable or data specific to one thread cannot be accessed by another threads.
+--> In Threadlocal we can place only one object per thread at a time.
+--> Real Life example of ThreadLocal are in J2EE application servers which uses java
+     ThreadLocal variable to keep track of transaction and security Context. It makes lot of sense
+      to share heavy object like Database Connection as ThreadLocal in order to avoid excessive
+      creation and cost of locking in case of sharing global instance.
+
+      In Hibernate we maintain Session in  ThreadLocal in HibernateUtil class
+     HibernateUtil class
+     ==============
+     public class HibernateUtil {
+	private static ThreadLocal<Session> threadLocal=new ThreadLocal<Session>();
+	private static SessionFactory factory;
+	
+	static{
+		Configuration cfg=null;
+		StandardServiceRegistryBuilder builder=null;
+		ServiceRegistry registry=null;
+		//Create SessionFactory obj
+		cfg=new Configuration();
+		cfg=cfg.configure("/com/nt/cfgs/hibernate.cfg.xml");
+		builder=new StandardServiceRegistryBuilder();
+		registry=builder.applySettings(cfg.getProperties()).build();
+		factory=cfg.buildSessionFactory(registry);
+		
+	}
+	
+	public static Session getSession(){
+		
+		 Session session=null;
+		 if(threadLocal.get()==null){
+			 session=factory.openSession();
+			 threadLocal.set(session);
+		 }
+		 session=threadLocal.get();
+		
+		 return session;
+	}//getSession()
+	
+	public static void closeSession(){
+		Session session=null;
+		session=threadLocal.get();
+		session.close();
+		threadLocal.remove();
+	}
+	
+	public static  void closeSessionFactory(){
+		factory.close();
+	}
+	
+}// HibernateUtil class
+
+Volatile:
+=======
+--> The volatile keyword in Java is used as an indicator to Java compiler and Thread that do not cache 
+      value of this variable and always read it from main memory. So if you want to share any variable in
+       which read and write operation is atomic by implementation. 
+ e.g.--> read and write in an int or a boolean variable then you can declare them as volatile variable.
+
+ -->The Java volatile keyword cannot be used with method or class and it can only be used with a variable. 
+ --> Java volatile keyword also guarantees visibility and ordering, after Java 5 write to any volatile variable
+       happens before any read into the volatile variable. By the way use of volatile keyword also prevents compiler 
+       or JVM from the reordering of code or moving away them from synchronization barrier.
+
+ The Volatile variable Example in Java.
+=================================
+public class Singleton{
+private static volatile Singleton instance; //volatile variable 
+
+public static Singleton getInstance(){
+
+   if(instance == null){
+            synchronized(Singleton.class){
+              if(instance == null)
+              instance = new Singleton();
+            }//synchronized block
+
+   }//if
+   return instance;
+
+     }//method
+}//class
+
+If you look at the code carefully you will be able to figure out:
+1) We are only creating instance one time
+2) We are creating instance lazily at the time of the first request comes.
+
+
+-->If we do not make the instance variable volatile than the Thread which is creating instance of Singleton 
+     is not able to communicate other thread, that instance has been created until it comes out of the Singleton block, 
+      so if Thread A is creating Singleton instance and just after creation lost the CPU, all other thread will not be able
+      to see value of instance as not null and they will believe its still null.
+
+AtomicInteger in Java
+================
+-->Atomic operations are performed in a single unit of task without interference from other operations. 
+--> Atomic operations are necessity in multi-threaded environment to avoid data inconsistency.
+
+Let’s create a simple multi-threaded program where every thread increments the shared count variable 4 times. 
+So if there are two threads, after they finish count value should be 8.
+
+ProcessingThread
+=============
+class ProcessingThread implements Runnable {
+    private int count;
+
+    @Override
+    public void run() {
+        for (int i = 1; i < 5; i++) {
+            processSomething(i);
+            count++;
+        }//for
+    }//run
+
+    public int getCount() {
+        return this.count;
+    }//getCount()
+
+    private void processSomething(int i) {
+        // processing some job
+        try {
+            Thread.sleep(i * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+}//class
+
+JavaAtomic.java
+=============
+public class JavaAtomic {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        ProcessingThread pt = new ProcessingThread();
+        Thread t1 = new Thread(pt, "t1");
+        t1.start();
+        Thread t2 = new Thread(pt, "t2");
+        t2.start();
+        t1.join();
+        t2.join();
+        System.out.println("Processing count=" + pt.getCount());
+    }
+
+}
+
+-->If you will run above program, you will notice that count value varies between 5,6,7,8. 
+     The reason is because count++ is not an atomic operation. So by the time one threads read it's value and increment it by one, 
+     other thread has read the older value leading to wrong result.
+
+ -->To solve this issue, we will have to make sure that increment operation on count is atomic, 
+      we can do that using Synchronization but Java 5 java.util.concurrent.atomic provides wrapper classes for int and long
+       that can be used to achieve this atomic operation without usage of Synchronization.
+
+
+Java AtomicInteger Example
+=====================
+
+-->Here is the updated program that will always output count value as 8 because AtomicInteger method incrementAndGet()
+atomically increments the current value by one.
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class JavaAtomic {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        ProcessingThread pt = new ProcessingThread();
+        Thread t1 = new Thread(pt, "t1");
+        t1.start();
+        Thread t2 = new Thread(pt, "t2");
+        t2.start();
+        t1.join();
+        t2.join();
+        System.out.println("Processing count=" + pt.getCount());
+    }
+}
+
+class ProcessingThread implements Runnable {
+    private AtomicInteger count = new AtomicInteger();
+
+    @Override
+    public void run() {
+        for (int i = 1; i < 5; i++) {
+            processSomething(i);
+            count.incrementAndGet();
+        }
+    }
+
+    public int getCount() {
+        return this.count.get();
+    }
+
+    private void processSomething(int i) {
+        // processing some job
+        try {
+            Thread.sleep(i * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+Benefits of using Concurrency classes for atomic operation is that we don't need to worry about synchronization. 
+This improves code readability and chance of errors are reduced. Also atomic operation concurrency classes are
+assumed to be more efficient that synchronization which involves locking resources.

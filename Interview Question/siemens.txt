@@ -1,0 +1,248 @@
+interview question in siemens
+second round all question are real time try to practice 
+Interview Questions in Siemens
+First round 
+Core Java: 
+==========
+1. What is exception? 
+Ans:==>Exception is an object that represents a logical mistake occurred in the program due to
+    wrong input given by enduser during program execution.
+
+2. What is checked and unchecked exception? 
+Ans:==>Checked Exception :=>The exception which is checked by compiler for smooth execution of the 
+    program at runtime are called Checked Exception.
+     eg:=>FileNotFoundException
+          SQLException
+          HallTicketMissingException(CustomeException)
+          PenNotWorkingException(CustomException)   
+    In the case of Checked Exception compiler will check whether we are handling exception if the 
+    programmer not handling then we get compile time error.
+
+    Unchecked Excpetion:=>The exceptions which are not checked by compiler are called Checked
+    Exceptions.
+      eg:=>ArithmeticException
+           NullPointerException
+           BombBlastException(CustomeException)
+    In the case of UncheckedException compiler won't check whether programmer handling exception
+    or not
+
+3. Which one u prefer to handle exception try-catch or throws? 
+Ans==>try-catch
+
+4. In your project how u handle the exception in which layer and how u map ?
+Ans:=>In our project we did not eat or surpress the exceptions in any layer of business tier always
+   deligate or forward the exception to controller component by converting into application specific
+   exception. so that the controller servlet can display error page showing the exception.
+    
+ 
+
+
+
+5. Which collection u used in your project write some pseudo code? 
+Ans:==> We are mainly List and Map collection used in our project.
+            A collection is a java container object it is used for storing multiple homogenous and 
+        heterogenous object ,unique and duplicate object without size limitation further it is used 
+        for carrying all objects at a time from one class to another class as method arguments and 
+        return value.
+            We are used collection object(List,Map) in DAO classes for storing all customer,students
+       (as per ur project required) information without size limitation as many record as available
+       in DataBase and further we want to transfer(return) all these customer,student(as per ur 
+       project) information at a time from DAO classes to service classes and from service class to 
+       controller classes for displaying on browser.
+       Write some pseudo code:
+       =======================
+
+6. Difference between HashMap and HashTable ?
+Ans:==>HashMap:
+       =======
+       1. In HashMap no method is synchronized and its object are not thread-safe.
+       2. Performance is high.
+       3. HashMap contains one null key and multiple null values.
+      
+      HashTable:
+      ========= 
+       1. In Hashtable all methods are synchronized and hence it is thread safe.
+       2. Performance is low compare to HashMap.
+       3. Null insertion is not possible for both key and value voilation lead NullPointerException.
+
+
+7. If 2 thread try to access my collection Object at same time then is there any problem? 
+   If yes how can I handle this? 
+Ans:==>Yes,the problem is data inconsistency.
+       To overcome these problem we should go for synchronized keyword.If a method or blocks declared
+       as synchronized then at a time only one thread is allow to execute that method or block on the
+       given object.so that data inconsistency problem is resolved.
+
+8. What is synchronization, and what are the various places where we can use it 
+Ans:==>Synchronization is a modifier applicable only for methods and blocks but not for classes and 
+      variables. The process of allowing multiple threads to modify an object in sequence is called
+      synchronization.We can allow multiple threads modifying the object sequentially only by 
+      executing that object's mutator methods logic in sequence from multiple threads. 
+      This possible by using object locking concept.
+
+9. What is static keyword, where we have to prefer that keyword and why? 
+Ans:==>The class level members which have static keyword in their definition are called static member.
+       Java supports 4 types of static members
+        1.static variable
+        2.static block
+        3.static method
+        4.static main method
+       All static members are identified and get memory location at the time of class loading by 
+       default by JVM in method area.
+
+10. What is the difference between static block and static method? 
+Ans:==>
+
+11. Can i access an instance field from static context? 
+Ans:==> No
+
+12. Can i call a static method through the object reference? 
+Ans:==>Yes
+
+13. Can i declare a class as private? 
+Ans:==>No
+
+14. HashMap internal works? 
+Ans:==>
+
+15. programme: i have one string 9845321067 I have to sort the string in reverse order 
+    o/p:-9876543210 without using any predefined method 
+
+16. What is polymorphism?Give one example?
+Ans:==>It is one thing but multiple behaviour.
+       Polymorphism means "mean forms".
+       Single form behaving differently in different situation.
+       A single function or single characters in different places.
+       eg:->President in home acts as husband and parent.
+           and office acts good president.
+       polymorphism refers to the ability of two or more objects belogining to different
+       clases to respond exactly to the same message in class specific ways.
+        
+
+Hibernate:
+========= 
+1. If JDBC is there why hibernate? 
+2. Can I reuse the session? If yes how if no then what is the problem? 
+3. What is the difference between level-1 and level-2 cache? 
+4. Difference between get and load? 
+5. Difference between update and merge? 
+6. What is the state of object? 
+7. What is the lazy attribute and how it works? 
+8. How u configure data Source and name of the data Source? 
+
+Spring: 
+=======
+1. What is dependency injection? 
+Ans:==>If the underlying server or container dynamically assign the 
+       dependent value to our resources (objects/classes) program then 
+       it is called Dependency Injection.
+
+       There are 4 types of dependenecy Injection
+         1. Setter Injection (We can inject through setter method call)
+         2. Constructor Injection(We can inject through parameterized constructor)
+         3. Aware Injection or Interface Injection
+         4. Lookup Method Injection
+       
+2. What is the spring MVC annotation you used in your project? 
+Ans:==>There are many sprng mvc annotations used in our project.
+       1.@RequestParam
+       2.@ModelAttribute
+       3.@RequestMapping
+       4.@Controller
+       5.@Service
+       6.@Resource
+       7.@Autowire
+       8.@Bean
+       9.@InitBinder
+      10.@Inject
+      11.@Qualifier and etc..
+
+3. Explain the Spring MVC flow relate with your project architecture? 
+Ans:==>Explain Spring MVC flow with respect to your project..
+      
+4. For every request I have to trace the IP address of user note :
+    ( before control will come to the my controller class I want to trace) 
+Ans:==>Please post this question on Facebook sriman_java group.
+
+5. What is AOP? 
+Ans=>AOP is the methodlogy of programming that makes the programmer primary logics of application
+     from the secondary logics or helper logics.AOP is not replacement for OOP
+     more ever it complements for OOP.
+     In AOP we develop business methods in classes by mixing up both primary,secondary logics.
+     Due to this bussiness method becomes heavy and reusability of secondary logics will be killed 
+     we cannot enable or disable secondary logics without touching source code of bussoness method.
+         To overcome this method use AOP that makes the programmer to write primary logics in
+     separate class and secondary logics in another class and allow to mix and bind both logics
+     dynamically at runtime by generating new class.
+
+6. What is the difference between join point and point cut? 
+Ans==>JoinPoint:=>The possible points in classes on which aspect logics can be applied is 
+                  called Joinpoint.They are like fields,Constructor,methods and etc..
+                  Spring supports only methods at jointpoint.
+
+      PointCut:=> It is a collections of jointpoint on which apsects are applied
+                 (i.e apsect are configured)
+
+7. What is the difference between interceptor and around advice in spring AOP? 
+ANs:==>
+
+8. Can we access stored procedure through spring? 
+Ans:==>Yes, by using SpringJdbc
+
+9. Can I write 2 times init() method in bean? 
+Ans:==>
+
+10. In my application unused bean is there I don't want to instantiate that bean how can I handle?
+Ans:==>
+
+Second round :( project manager) 
+================================
+1. What you know about Siemens? 
+2. Why you prefer to attend interview here in weekends other 
+   interview is going on? 
+3. Why you want to look for change? 
+4. Brief yourself? 
+5. Give your project summary? 
+6. Where you used web servics in your project and how? 
+7. If your resource will modify the code then it will impact to client then how can you manage 
+8. By accessing web services if you will get exception then how can I handle it? 
+9. Difference between rest and soap? 
+10. How request will forward through soap give explanation? 
+9. They will give one scenario and u has to tell in this situation what you have to use rest or soap with valid reason 
+10. How can you get the resource URI via mail or any other source? 
+11. Rest did you apply any security in your project ,if no then it can be access by any other person or not if person was know your URI 
+12. How you call your resource by using spring give the complete architecture. 
+13. What are the basic requirement to developed rest resource brief this. 
+14. Did u ever get a chance to write WSDL? 
+15. Explain the WSDLwith document-wrapped approach 
+16. What is the difference between serialization and externalization? 
+17. Write the procedure to serialize the object 
+18 what are the method present in serializable interface
+19. What is marker interface? 
+20. What is the difference between serialization and web services cause in both the concept we are exposing our business object over the network 
+21. Write down a singleton class
+22. How can I restrict that no one can serialize my Singleton class object 
+23. Is my singleton class can be super class for other classes 
+24. How can I restricted that no one can be make IS-A relationship with my class
+25. What is classCastException give one example and how to resolve it? 
+26. Did you ever face NullPointerException in your project then how can you handle it. 
+27. Which server you used and which format you used to package your application 
+28. How you deploy the code 
+29. If you are accessing other class and that class have some logical mistake then who will handle? And how u will know that logic was written by whom 
+30. Question:
+    Ex:=>   public class A { 
+              String name;
+          
+               public A(String name) { 
+                   this.name = name; 
+                }
+            }
+           public class B extends A{
+       
+            }
+       Here can I instantiate B class
+31. What is the build tool you used give some overall view. 
+32. Which bug tracking tool you used and how testing team report about bug 
+33. How code review will be happed? 
+34. What the topics you are discussing in scrum meeting and how much time your scrum meeting duration? 
+35. Your scrum master is onsite people or your Company person who is in onsite.

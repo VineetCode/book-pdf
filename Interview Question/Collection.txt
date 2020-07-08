@@ -1,0 +1,69 @@
+Collections interveiw Questions:
+============================
+1. What are limitation of object Arrays?
+2. What are differences between arrays and collections?
+3. What are differences between arrays and ArrayList?
+4. What are differences between arrays and Vector?
+5. What is Collection API?
+6. What is Collection framework?
+7. What is difference between Collections and Collection?
+8. Explain about Collection interface?
+9. Explain about List interface?
+10. Explain about Set interface?
+11. Explain about SortedSet interface?
+12. Explain about NavigableSet?
+13. Explain about Queue interface?
+14. Explain about Map interface?
+15. Explain about SortedMap?
+16. Explain about NavigableMap?
+17. Explain about ArrayList class?
+18. What is RandomAccess Interface?
+19. Explain about LinkedList class?
+20. Explain about Vector class?
+21. What is difference between ArrayList and Vector?
+22. How we can get synchronized version of ArrayList?
+23. What is difference between size and capacity of a Collection Object?
+24. What is difference between ArrayList and Linked List?
+25. What are legacy classes and interfaces present in Collections framework?
+26. What is difference Enumeration and Iterator?
+27. What are limitations of Enumeration?
+28. What is difference between enum and Enumeration?
+29. What is difference between Iterator and ListIterator?
+30. What is relation between ListIterator and Iterator?
+31. Explain about HashSet class?
+32. If we are trying to insert duplicate values in Set what will happen?
+33. What is LinkedHashSet?
+34. What is difference between HashSet and LinkedHashSet?
+35. What are major enhancements in 1.4 version of collection frame work?
+36. Explain about TreeSet?
+37. What are differences between List and Set interfaces?
+38. What is Comparable interface?
+39. What is Comparator interface?
+40. What are differences between Comparable and Comparator?
+41. What is difference between HashSet and TreeSet?
+42. What is Entry interface?
+43. Explain about HashMap?
+44. Explain about LinkedHashMap?
+45. What are the differences between HashMap and LinkedHashMap?
+46. What are the differences between HashMap and Hashtable?
+47. What is IdentityHashMap?
+48. What is difference between HashMap and IdentityHashMap?
+49. What is WeakHashMap?
+50. What is difference between HashMap and WeakHashMap?
+51. What is TreeMap?
+52. What is Hashtable?
+53. What is PriorityQueue?
+54. What is Arrays class?
+55. We are planning to do an indexed search in a list of objects. Which of the two Java collections should you use: ArrayList or LinkedList?
+56. Why ArrayList is faster than Vector?
+57. How we can sort the elements of list?
+58. How we can reverse the order of elements of a list?
+59. Explain about Collections class?
+60. What is the b/w reverse () and reverseOrder () present in Collections class?
+61. Explain about Arrays class?
+62. How we can implement sorting for arrays?
+63. Is it possible to convert collection object to Array?
+64. Is it possible to convert array into ArrayList form?
+65. Explain about binarySearch() method available in Collections and Arrays classes?
+66. What is the difference b/w index and insertion point?
+67. What is load-factor?
